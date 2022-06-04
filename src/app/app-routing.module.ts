@@ -4,17 +4,21 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
-    path: 'roasts',
-    loadChildren: () => import('./roasts/roasts.module').then( m => m.RoastsPageModule)
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'roast',
-    loadChildren: () => import('./roasts/roast/roast.module').then( m => m.RoastPageModule)
-  }
+    path: 'roasts',
+    loadChildren: () => import('./pages/roasts/roasts.module').then( m => m.RoastsPageModule)
+  },
+  {
+    path: 'crops',
+    loadChildren: () => import('./pages/crops/crops.module').then( m => m.CropsPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New Crop</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="form">
+    <ion-list-header>
+      <ion-label>
+        Enter Crop Details
+      </ion-label>
+    </ion-list-header>
+    <ion-item class="form-row">
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" ngDefaultControl [(ngModel)]="name"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-row">
+      <ion-label position="floating">Origin</ion-label>
+      <ion-input type="text" ngDefaultControl [(ngModel)]="origin"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-row">
+      <ion-label position="floating">Year</ion-label>
+      <ion-input type="number" ngDefaultControl [(ngModel)]="year"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-row">
+      <ion-label position="floating">Altitude</ion-label>
+      <ion-input type="number" ngDefaultControl [(ngModel)]="altitude"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Altitude Unit</ion-label>
+      <ion-select ngDefaultControl [(ngModel)]="altitudeUnit">
+        <ion-select-option *ngFor="let unit of getDistanceUnits()">{{ unit }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" (click)="createCrop()" class="button">
+    Create Crop
+  </ion-button>
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-button (click)="addCrop()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>My Crops</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngFor="let c of crops | async;">
+      <ion-col size="8">
+        <div class="row">
+          <span class="label">Name:</span>
+          {{ c.name }}
+        </div>
+        <div class="row">
+          <span class="label">Origin:</span>
+          {{ c.origin }}
+        </div>
+        <div class="row">
+          <span class="label">Year:</span>
+          {{ c.year }}
+        </div>
+        <div class="row">
+          <span class="label">Altitude:</span>
+          {{ c.altitude }} {{ c.altitudeUnit }}
+        </div>
+      </ion-col>
+      <ion-col alignment="middle">
+        <ion-button color="danger" (click)="deleteCrop(c)">Delete</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-button (click)="addRoast()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>My Roasts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="roasts-view-container">
+  <ion-grid>
+    <ion-row *ngFor="let r of roasts | async;">
+      <ion-col size="8">
+        <div class="row">
+          <span class="label">Crop:</span>
+          {{ r.crop.name }}
+        </div>
+        <div class="row">
+          <span class="label">Roast Date:</span>
+          {{ r.dateAsEnUsString }}
+        </div>
+        <div class="row">
+          <span class="label">Temperature:</span>
+          {{ r.temperature }} - {{ r.temperatureUnit }}
+        </div>
+        <div class="row">
+          <span class="label">Roast Time:</span>
+          {{ r.roastTimeInMinutes }} minutes
+        </div>
+        <div class="row">
+          <span class="label">Tasting Notes:</span>
+          {{ r.tastingNotes.join(', ') }}
+        </div>
+      </ion-col>
+      <ion-col alignment="middle">
+        <ion-button color="danger" (click)="deleteRoast(r)">Delete</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
