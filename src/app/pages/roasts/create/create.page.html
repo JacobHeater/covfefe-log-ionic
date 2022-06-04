@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New Roast</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="form">
+    <ion-list-header>
+      <ion-label>
+        Enter Roast Details
+      </ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Roast Crop</ion-label>
+      <ion-select ngDefaultControl [(ngModel)]="crop">
+        <ion-select-option *ngFor="let c of crops | async;" value="{{c._id}}">
+          {{ c.name }} - {{ c.origin }} / {{ c.year }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="form-row">
+      <ion-datetime ngDefaultControl presentation="date" [(ngModel)]="date">
+        <div slot="title">Roast Date</div>
+      </ion-datetime>
+    </ion-item>
+
+    <ion-item class="form-row">
+      <ion-label position="floating">Temperature</ion-label>
+      <ion-input type="number" ngDefaultControl [(ngModel)]="temperature"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-row">
+      <ion-label position="floating">Temperature Unit</ion-label>
+      <ion-select ngDefaultControl [(ngModel)]="temperatureUnit">
+        <ion-select-option *ngFor="let unit of getTemperatureUnits()">{{ unit }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="form-row">
+      <ion-label position="floating">Roast Time (in Seconds)</ion-label>
+      <ion-input type="number" ngDefaultControl [(ngModel)]="roastTime"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Tasting Notes</ion-label>
+      <ion-input type="text" ngDefaultControl [(ngModel)]="tastingNotes"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" (click)="createRoast()" class="button">
+    Create Roast
+  </ion-button>
+</ion-content>

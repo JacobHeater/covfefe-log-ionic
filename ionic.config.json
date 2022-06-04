@@ -1,0 +1,8 @@
+{
+  "name": "Covfefe Log",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}
